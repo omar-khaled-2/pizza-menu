@@ -23,7 +23,6 @@ RUN npm install
 # - Sets the default command to run the development server
 FROM dependencies AS development
 COPY . .
-CMD ["npm", "run", "dev"]
 
 # Stage 4: Production
 # - Uses the development stage as the starting point
@@ -35,7 +34,6 @@ ENV NODE_ENV production
 RUN npm ci --only=production
 USER node
 COPY --chown=node:node ./src/ .
-# COPY --chown=node:node ./healthcheck/ .
 
 # Exposes port 3000 for the application
 EXPOSE 3000
