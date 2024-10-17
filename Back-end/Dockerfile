@@ -15,9 +15,7 @@ COPY package*.json .
 # - Installs project dependencies using npm
 # - Utilizes Docker build cache for faster builds
 FROM base AS dependencies
-RUN --mount=type=cache,target=/usr/src/app/.npm \
-    npm set cache /usr/src/app/.npm && \
-    npm install
+RUN npm install
 
 # Stage 3: Development
 # - Uses the dependencies stage as the starting point
@@ -34,15 +32,10 @@ CMD ["npm", "run", "dev"]
 # - Changes ownership of the /usr/src/app/src and /usr/src/app/healthcheck directories to node:node
 FROM development as production
 ENV NODE_ENV production
-RUN --mount=type=cache,target=/usr/src/app/.npm \
-    npm set cache /usr/src/app/.npm && \
-    npm ci --only=production
+RUN npm ci --only=production
 USER node
 COPY --chown=node:node ./src/ .
 # COPY --chown=node:node ./healthcheck/ .
-
-# Sets up a healthcheck command to check the application's health
-HEALTHCHECK CMD node healthcheck.js
 
 # Exposes port 3000 for the application
 EXPOSE 3000
