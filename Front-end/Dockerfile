@@ -15,9 +15,7 @@ WORKDIR /usr/src/app
 # - Utilizes Docker build cache for faster builds
 FROM base AS dependencies
 COPY package*.json ./
-RUN --mount=type=cache,target=/usr/src/app/.npm \
-    npm set cache /usr/src/app/.npm && \
-    npm install
+RUN npm install
 
 # Stage 3: Build the application
 # - Uses the dependencies stage as the starting point
