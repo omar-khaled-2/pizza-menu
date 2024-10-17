@@ -29,7 +29,6 @@ RUN npm run build
 # - Copies the Nginx configuration file
 # - Copies the built application from the development stage
 FROM nginx:stable-alpine-perl AS production
-# COPY --link nginx.conf /etc/nginx/config.d/default.conf
 COPY --link --from=development usr/src/app/build /usr/share/nginx/html
 
 # - Exposes port 80
