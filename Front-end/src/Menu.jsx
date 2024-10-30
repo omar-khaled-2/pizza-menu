@@ -7,7 +7,6 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 
 const getPizzas = async () => {
-    console.log(1,apiUrl);
     const menu = await fetch(`${apiUrl}/menu/pizzas`);
     if (!menu.ok) throw new Error('Failed to fetch menu');
     return await menu.json();
