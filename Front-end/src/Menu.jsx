@@ -3,6 +3,9 @@ import Pizza from "./Pizza";
 
 const apiUrl = process.env.API_URL
 
+
+console.log(process.env)
+
 const getPizzas = async () => {
     
     const menu = await fetch(`${apiUrl}/menu/pizzas`);
