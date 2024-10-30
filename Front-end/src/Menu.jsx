@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import Pizza from "./Pizza";
 
-const apiUrl = process.env.API_URL
 
-
-console.log(process.env)
 
 const getPizzas = async () => {
     
