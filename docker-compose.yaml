@@ -28,13 +28,14 @@ services:
     build:
       context: ./Front-end # My frontend code is in the 'Front-end' directory
       dockerfile: Dockerfile # The Dockerfile for the frontend React app
+      args:
+        - API_URL=http://backend:3000
     container_name: frontend
     ports:
       - "3001:80" # Exposes frontend on port 3001
     depends_on:
       - backend # Wait for the backend to be ready
-    environment:
-      - API_URL=http://backend:3000 # API URL for the backend using service name
+
     networks:
       - app-network # Connects to the custom network
 
