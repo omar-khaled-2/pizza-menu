@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Pizza from "./Pizza";
 
-const apiUrl = process.env.API_URL;
+
+const apiUrl = process.env.REACT_APP_API_URL;
 
 
 

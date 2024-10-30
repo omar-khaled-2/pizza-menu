@@ -25,7 +25,7 @@ FROM dependencies AS development
 COPY . .
 
 ARG API_URL
-ENV API_URL $API_URL
+ENV REACT_APP_API_URL=$API_URL
 RUN npm run build
 
 # Stage 4: Nginx production
