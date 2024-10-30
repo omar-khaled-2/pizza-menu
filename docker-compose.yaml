@@ -34,7 +34,7 @@ services:
     depends_on:
       - backend # Wait for the backend to be ready
     environment:
-      - REACT_APP_API_URL=http://backend:3000/ # API URL for the backend using service name
+      - API_URL=http://backend:3000 # API URL for the backend using service name
     networks:
       - app-network # Connects to the custom network
 

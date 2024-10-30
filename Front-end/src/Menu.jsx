@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import Pizza from "./Pizza";
 
-const mongoURI = process.env.MONGO_URL
+const apiUrl = process.env.API_URL
 
 const getPizzas = async () => {
-    console.log(mongoURI);
-    const menu = await fetch('http://localhost:3000/menu/pizzas');
+    
+    const menu = await fetch(`${apiUrl}/menu/pizzas`);
     if (!menu.ok) throw new Error('Failed to fetch menu');
     return await menu.json();
 
