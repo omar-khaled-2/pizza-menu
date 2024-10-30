@@ -23,14 +23,13 @@ RUN npm install
 # - Runs the build script
 FROM dependencies AS development
 COPY . .
+ARG API_URL
+ENV API_URL=${API_URL}
 RUN npm run build
 
 # Stage 4: Nginx production
 # - Copies the Nginx configuration file
 # - Copies the built application from the development stage
-
-ARG API_URL
-ENV API_URL=${API_URL}
 FROM nginx:stable-alpine-perl AS production
 COPY --link --from=development usr/src/app/build /usr/share/nginx/html
 
