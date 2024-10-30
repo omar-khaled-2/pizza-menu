@@ -24,7 +24,7 @@ RUN npm install
 FROM dependencies AS development
 COPY . .
 
-
+ARG API_URL
 ENV REACT_APP_API_URL=$API_URL
 RUN npm run build
 
